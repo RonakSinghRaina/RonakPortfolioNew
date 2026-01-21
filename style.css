@@ -3,21 +3,41 @@
   border: 1px solid red !important; 
 } */
 :root {
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #111111;
-  --bg-tertiary: #1a1a1a;
-  --accent-primary: #00d4ff;
-  --accent-secondary: #ff0080;
-  --accent-tertiary: #00ff88;
+  /* Dark Theme (Default) */
+  --bg-primary: #000000;
+  --bg-secondary: #020208;
+  --bg-tertiary: #050510;
+  --accent-primary: #1e40af;
+  --accent-secondary: #3b82f6;
+  --accent-tertiary: #60a5fa;
   --text-primary: #ffffff;
-  --text-secondary: #a0a0a0;
-  --text-muted: #666666;
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --shadow-glow: 0 0 30px rgba(0, 212, 255, 0.3);
-  --gradient-primary: linear-gradient(135deg, #00d4ff, #ff0080);
-  --gradient-secondary: linear-gradient(135deg, #ff0080, #00ff88);
-  --gradient-tertiary: linear-gradient(135deg, #00ff88, #00d4ff);
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --glass-bg: rgba(0, 0, 0, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --shadow-glow: 0 0 30px rgba(30, 64, 175, 0.4);
+  --gradient-primary: linear-gradient(135deg, #1e40af, #3b82f6);
+  --gradient-secondary: linear-gradient(135deg, #3b82f6, #60a5fa);
+  --gradient-tertiary: linear-gradient(135deg, #60a5fa, #1e40af);
+}
+
+/* Light Theme */
+body.light-theme {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --accent-primary: #1e40af;
+  --accent-secondary: #3b82f6;
+  --accent-tertiary: #60a5fa;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(30, 64, 175, 0.15);
+  --shadow-glow: 0 0 30px rgba(59, 130, 246, 0.2);
+  --gradient-primary: linear-gradient(135deg, #1e40af, #3b82f6);
+  --gradient-secondary: linear-gradient(135deg, #3b82f6, #60a5fa);
+  --gradient-tertiary: linear-gradient(135deg, #60a5fa, #1e40af);
 }
 
 /* Base & Reset */
@@ -82,21 +102,46 @@ body {
 }
 .physics-background {
   z-index: -10;
-  background: radial-gradient(
+  background: 
+    linear-gradient(135deg, rgba(10, 25, 70, 0.4) 0%,transparent 50%),
+    linear-gradient(225deg, rgba(30, 64, 175, 0.3) 0%, transparent 50%),
+    radial-gradient(
       circle at 20% 80%,
-      rgba(0, 212, 255, 0.1) 0%,
+      rgba(30, 64, 175, 0.2) 0%,
       transparent 50%
     ),
     radial-gradient(
       circle at 80% 20%,
-      rgba(255, 0, 128, 0.1) 0%,
+      rgba(59, 130, 246, 0.2) 0%,
       transparent 50%
     ),
     radial-gradient(
       circle at 40% 40%,
-      rgba(0, 255, 136, 0.05) 0%,
+      rgba(96, 165, 250, 0.15) 0%,
       transparent 50%
     );
+}
+
+/* Light Theme Background */
+body.light-theme .physics-background {
+  background: 
+    linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+    linear-gradient(225deg, rgba(96, 165, 250, 0.06) 0%, transparent 50%),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(59, 130, 246, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(96, 165, 250, 0.08) 0%,
+      transparent 50%
+    );
+}
+
+body.light-theme .equation {
+  color: rgba(30, 64, 175, 0.15);
+  opacity: 0.3;
 }
 .physics-particles {
   z-index: -9;
@@ -127,9 +172,10 @@ body {
   position: absolute;
   font-family: "JetBrains Mono", monospace;
   color: var(--accent-primary);
-  opacity: 0.1;
-  font-size: 1.2rem;
-  animation: floatEquation 25s linear infinite;
+  opacity: 0.2;
+  font-size: 1.5rem;
+  animation: floatEquation 20s linear infinite;
+  font-weight: 500;
 }
 @keyframes floatEquation {
   0% {
@@ -137,10 +183,10 @@ body {
     opacity: 0;
   }
   10% {
-    opacity: 0.1;
+    opacity: 0.2;
   }
   90% {
-    opacity: 0.1;
+    opacity: 0.2;
   }
   100% {
     transform: translateY(-100vh) rotate(360deg);
@@ -155,14 +201,15 @@ header {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(10, 10, 10, 0.8);
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--glass-border);
   padding: 1rem 0;
   transition: all 0.3s ease;
 }
 header.scrolled {
-  background: rgba(10, 10, 10, 0.95);
+  background: rgba(0, 0, 0, 0.6);
   box-shadow: var(--shadow-glow);
 }
 nav {
@@ -185,8 +232,42 @@ nav {
 }
 .logo:hover {
   transform: scale(1.05);
-  filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+  filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
 }
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  margin-left: 1rem;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1) rotate(15deg);
+  background: rgba(59, 130, 246, 0.2);
+  border-color: var(--accent-secondary);
+}
+
+.theme-toggle i {
+  font-size: 1.2rem;
+  color: var(--accent-secondary);
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover i {
+  transform: rotate(25deg);
+}
+
 .nav-links {
   display: flex;
   list-style: none;
@@ -225,7 +306,7 @@ nav {
 .nav-links a.active {
   color: var(--text-primary);
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
   border-color: var(--accent-primary);
 }
 
@@ -268,68 +349,102 @@ nav {
     transform: translate(-50%, -50%) rotate(360deg);
   }
 }
-.hero h1 {
-  font-size: clamp(2.5rem, 6vw, 5rem);
+.hero h1,
+.hero-headline {
+  font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 800;
   margin-bottom: 2rem;
+  line-height: 1.1;
+}
+
+.hero h2,
+.hero-headline-sub {
+  font-weight: 800;
+  margin-bottom: 2rem;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateY(30px) scale(0.9);
+  animation: popupAppear 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.3s;
+}
+
+@keyframes popupAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* PeerPrep Style: Pure White Text */
+.white-text {
+  color: #ffffff;
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+/* PeerPrep Style: Blue Gradient Text */
+.gradient-text-span {
   background: linear-gradient(
-    135deg,
-    var(--text-primary),
-    var(--accent-primary),
-    var(--accent-secondary)
+    90deg,
+    #3b82f6,
+    #6366f1,
+    #a855f7
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: textGlow 3s ease-in-out infinite alternate;
+  display: inline-block;
+  background-size: 200% 100%;
+  animation: gradientShimmer 3s ease-in-out infinite;
 }
 
-.hero h2 {
-  font-weight: 800;
-  margin-bottom: 2rem;
-  background: linear-gradient(
-    135deg,
-    var(--text-primary),
-    var(--accent-primary),
-    var(--accent-secondary)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: textGlow 3s ease-in-out infinite alternate;
-  font-size: xxx-large;
-  overflow: hidden;
-  white-space: nowrap;
-  /* animation: typing 2s steps(20)  alternate-reverse;
-
-    @keyframes typing {
-        from { width: 0ch; }
-        
-    } */
+@keyframes gradientShimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
+
 @keyframes textGlow {
   from {
-    filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
+    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.3));
   }
   to {
-    filter: drop-shadow(0 0 40px rgba(255, 0, 128, 0.3));
+    filter: drop-shadow(0 0 40px rgba(99, 102, 241, 0.3));
   }
 }
 .subtitle {
-  font-size: 1.8rem; /* You can adjust this size */
+  font-size: 1.3rem;
   color: var(--text-secondary);
-  font-family: "JetBrains Mono", monospace; /* A monospace font looks best for typing effects */
-
-  /* Properties for the typing effect */
-  display: inline-block; /* Allows us to animate the width */
-  overflow: hidden; /* Hides the text that hasn't been "typed" yet */
-  white-space: nowrap; /* Keeps the text on a single line */
-  border-right: 3px solid var(--accent-primary); /* This is the typing cursor */
-  width: 0; /* Start with zero width */
-
-  /* Apply the animations: 1. Typing the text 2. Blinking the cursor */
-  animation: typing 3s steps(35, end) forwards,
+  font-family: "JetBrains Mono", monospace;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+  text-align: center;
+  overflow: hidden;
+  border-right: 3px solid var(--accent-primary);
+  white-space: normal;
+  height: auto;
+  display: block;
+  animation: typewriterReveal 4s steps(100, end) forwards,
     blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typewriterReveal {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 200px;
+    opacity: 1;
+  }
 }
 
 /* Animation keyframes for the typing effect */
@@ -479,7 +594,7 @@ nav {
 
 .profile-img:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 50px rgba(0, 212, 255, 0.5);
+  box-shadow: 0 0 50px rgba(59, 130, 246, 0.5);
 }
 .quantum-grid {
   display: flex; /* Activates Flexbox */
@@ -522,7 +637,7 @@ nav {
 }
 .quantum-card:hover {
   transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
   border-color: var(--accent-primary);
 }
 .card-icon {
@@ -619,7 +734,7 @@ nav {
 .skill-card:hover,
 .blog-card:hover {
   transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
   border-color: var(--accent-primary);
 }
 .project-icon,
@@ -668,22 +783,40 @@ nav {
   gap: 0.5rem;
 }
 .tag {
-  background: rgba(0, 212, 255, 0.1);
-  color: var(--accent-primary);
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
   padding: 0.3rem 0.8rem;
   border-radius: 15px;
-  font-size: 0.8rem;
-  border: 1px solid rgba(0, 212, 255, 0.2);
+  font-size: 0.85rem;
+  border: 1px solid rgba(96, 165, 250, 0.4);
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+.tag:hover {
+  background: rgba(59, 130, 246, 0.25);
+  border-color: rgba(96, 165, 250, 0.6);
+  transform: translateY(-2px);
+  color: #93c5fd;
 }
 .tag.secondary {
-  background: rgba(255, 0, 128, 0.1);
-  color: var(--accent-secondary);
-  border-color: rgba(255, 0, 128, 0.2);
+  background: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
+  border-color: rgba(129, 140, 248, 0.4);
+}
+.tag.secondary:hover {
+  background: rgba(99, 102, 241, 0.25);
+  border-color: rgba(129, 140, 248, 0.6);
+  color: #a5b4fc;
 }
 .tag.tertiary {
-  background: rgba(0, 255, 136, 0.1);
-  color: var(--accent-tertiary);
-  border-color: rgba(0, 255, 136, 0.2);
+  background: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+  border-color: rgba(192, 132, 252, 0.4);
+}
+.tag.tertiary:hover {
+  background: rgba(168, 85, 247, 0.25);
+  border-color: rgba(192, 132, 252, 0.6);
+  color: #d8b4fe;
 }
 
 /* Skills Section */
@@ -732,11 +865,11 @@ nav {
   color: var(--text-muted);
 }
 .read-time {
-  background: rgba(0, 212, 255, 0.1);
+  background: rgba(59, 130, 246, 0.1);
   color: var(--accent-primary);
   padding: 0.3rem 0.8rem;
   border-radius: 15px;
-  border: 1px solid rgba(0, 212, 255, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.2);
 }
 .date {
   font-family: "JetBrains Mono", monospace;
@@ -780,9 +913,9 @@ nav {
 }
 .course-tag:hover {
   transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
   border-color: var(--accent-primary);
-  background: rgba(0, 212, 255, 0.1);
+  background: rgba(59, 130, 246, 0.1);
 }
 .academic-info {
   background: var(--glass-bg);
@@ -809,13 +942,13 @@ nav {
 }
 .gpa-highlight {
   display: inline-block;
-  background: rgba(0, 212, 255, 0.1);
+  background: rgba(59, 130, 246, 0.1);
   color: var(--accent-primary);
   padding: 0.5rem 1rem;
   border-radius: 15px;
   font-weight: 700;
   font-size: 1.1rem;
-  border: 1px solid rgba(0, 212, 255, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.2);
   margin-top: 1rem;
 }
 
@@ -1119,7 +1252,7 @@ footer {
 .contact-form-container textarea:focus {
   outline: none;
   border-color: var(--accent-primary);
-  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
 }
 
 .contact-submit-button {
@@ -1468,21 +1601,21 @@ footer {
 }
 
 .image-placeholder {
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #111111;
-  --bg-tertiary: #1a1a1a;
-  --accent-primary: #00d4ff;
-  --accent-secondary: #ff0080;
-  --accent-tertiary: #00ff88;
+  --bg-primary: #000000;
+  --bg-secondary: #0a0a1a;
+  --bg-tertiary: #151530;
+  --accent-primary: #3b82f6;
+  --accent-secondary: #6366f1;
+  --accent-tertiary: #a855f7;
   --text-primary: #ffffff;
-  --text-secondary: #a0a0a0;
-  --text-muted: #666666;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
   --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
-  --shadow-glow: 0 0 30px rgba(0, 212, 255, 0.3);
-  --gradient-primary: linear-gradient(135deg, #00d4ff, #ff0080);
-  --gradient-secondary: linear-gradient(135deg, #ff0080, #00ff88);
-  --gradient-tertiary: linear-gradient(135deg, #00ff88, #00d4ff);
+  --shadow-glow: 0 0 30px rgba(59, 130, 246, 0.3);
+  --gradient-primary: linear-gradient(135deg, #3b82f6, #6366f1);
+  --gradient-secondary: linear-gradient(135deg, #6366f1, #a855f7);
+  --gradient-tertiary: linear-gradient(135deg, #a855f7, #3b82f6);
   font-family: "Inter", sans-serif;
   color: var(--text-primary);
   line-height: 1.6;
@@ -1509,8 +1642,8 @@ footer {
 .takeaway-box {
   background: linear-gradient(
     135deg,
-    rgba(0, 212, 255, 0.05),
-    rgba(255, 0, 128, 0.05)
+    rgba(59, 130, 246, 0.05),
+    rgba(99, 102, 241, 0.05)
   );
   border: 1px solid var(--glass-border);
   border-radius: 15px;
@@ -1662,7 +1795,7 @@ footer {
 
 .blog-icon i {
   color: yellow;
-    --shadow-glow: 0 0 30px rgba(0, 212, 255, 0.3);
+    --shadow-glow: 0 0 30px rgba(59, 130, 246, 0.3);
 }
 
 /* --- Responsive Design for Mobile Devices --- */
