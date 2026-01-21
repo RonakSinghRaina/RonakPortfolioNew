@@ -65,9 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function createFloatingEquations(container) {
-        const equations = ['E = mc²', 'ψ = Ae^(ikx)', '∇²φ = 4πGρ', 'F = ma', 'S = k ln(Ω)', '∂ψ/∂t = Hψ', 'Gμν = 8πTμν'];
+        const equations = ['E = mc²', 'ψ = Ae^(ikx)', '∇²φ = 4πGρ', 'F = ma'];
         setInterval(() => {
-            if (container.children.length < 15) {
+            if (container.children.length < 8) {
                 const equationEl = document.createElement('div');
                 equationEl.className = 'equation';
                 equationEl.textContent = equations[Math.floor(Math.random() * equations.length)];
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 container.appendChild(equationEl);
                 setTimeout(() => equationEl.remove(), 25000);
             }
-        }, 3000);
+        }, 5000);
     }
     
     // --- CONTACT FORM ---
