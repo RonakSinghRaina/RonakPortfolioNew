@@ -12,11 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const loader = document.getElementById('loader');
         window.addEventListener('load', () => {
             setTimeout(() => {
-                if(loader) loader.classList.add('hidden');
+                if (loader) loader.classList.add('hidden');
             }, 400);
         });
     }
-    
+
     // --- ACTIVE NAVIGATION LINK HIGHLIGHTER ---
     function highlightActiveNav() {
         const navLinks = document.querySelectorAll('.nav-links a');
@@ -31,13 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             // Special case for Blog link, as it's in a subfolder
             if (window.location.pathname.includes('blogs_section')) {
-                 if(link.getAttribute('href').includes('blogs_section')) {
+                if (link.getAttribute('href').includes('blogs_section')) {
                     link.classList.add('active');
-                 }
+                }
             }
         });
         // Highlight HOME logo if on the index page
-        if(currentPage === '' || currentPage === 'index.html') {
+        if (currentPage === '' || currentPage === 'index.html') {
             document.querySelector('.logo').classList.add('active');
         }
     }
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function startBackgroundEffects() {
         const particleSystem = document.getElementById('particleSystem');
         if (particleSystem) createParticles(particleSystem, 50);
-        
+
         const equationSystem = document.getElementById('equationSystem');
         if (equationSystem) createFloatingEquations(equationSystem);
     }
@@ -65,51 +65,51 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function createFloatingEquations(container) {
-        const equations = ['E = mc²', 'ψ = Ae^(ikx)', '∇²φ = 4πGρ', 'F = ma', 'S = k ln(Ω)', '∂ψ/∂t = Hψ', 'Gμν = 8πTμν'];
+        const equations = ['E = mc²', 'ψ = Ae^(ikx)', '∇²φ = 4πGρ', 'F = ma', 'S = k ln(Ω)', '∂ψ/∂t = Hψ', 'Gμν = 8πTμν', 'Δx·Δp ≥ ħ/2', '∇·E = ρ/ε₀', 'PV = nRT', '∇×B = μ₀J'];
         setInterval(() => {
-            if (container.children.length < 15) {
+            if (container.children.length < 45) {
                 const equationEl = document.createElement('div');
                 equationEl.className = 'equation';
                 equationEl.textContent = equations[Math.floor(Math.random() * equations.length)];
                 equationEl.style.left = `${Math.random() * 100}%`;
-                equationEl.style.fontSize = `${Math.random() * 0.5 + 0.8}rem`;
+                equationEl.style.fontSize = `${Math.random() * 1.0 + 1.2}rem`;
                 container.appendChild(equationEl);
                 setTimeout(() => equationEl.remove(), 25000);
             }
-        }, 3000);
+        }, 800);
     }
-    
+
     // --- CONTACT FORM ---
     // THIS IS THE CORRECT FUNCTION
-function initializeContactForm() {
-    const contactForm = document.getElementById('contact-form');
-    if (!contactForm) return;
+    function initializeContactForm() {
+        const contactForm = document.getElementById('contact-form');
+        if (!contactForm) return;
 
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // Prevent the default page reload
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the default page reload
 
-        const form = e.target;
-        const data = new FormData(form);
-        
-        // This 'fetch' part is what actually sends the email
-        fetch(form.action, {
-            method: form.method,
-            body: data,
-            headers: {
-                'Accept': 'application/json'
-            }
-        }).then(response => {
-            if (response.ok) {
-                alert("Thank you for your message! I'll get back to you soon.");
-                form.reset(); // Clear the form fields
-            } else {
-                alert("Oops! There was a problem sending your message. Please try again.");
-            }
-        }).catch(error => {
-            alert("Oops! There was a network problem. Please try again.");
+            const form = e.target;
+            const data = new FormData(form);
+
+            // This 'fetch' part is what actually sends the email
+            fetch(form.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    alert("Thank you for your message! I'll get back to you soon.");
+                    form.reset(); // Clear the form fields
+                } else {
+                    alert("Oops! There was a problem sending your message. Please try again.");
+                }
+            }).catch(error => {
+                alert("Oops! There was a network problem. Please try again.");
+            });
         });
-    });
-}
+    }
 
     // --- SCROLL-BASED EFFECTS & ANIMATIONS ---
     function initializeScrollEffects() {
@@ -126,7 +126,7 @@ function initializeContactForm() {
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-        
+
         window.addEventListener('scroll', () => {
             const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
             if (scrollableHeight <= 0) return;
@@ -150,12 +150,12 @@ function initializeContactForm() {
     const contactForm = document.getElementById('contact-form');
     if (!contactForm) return;
 
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', function (e) {
         e.preventDefault(); // Prevent the default page reload
 
         const form = e.target;
         const data = new FormData(form);
-        
+
         // Send the data to Formspree in the background
         fetch(form.action, {
             method: form.method,
@@ -202,14 +202,14 @@ function initializeMobileMenu() {
 // And don't forget to call it!
 document.addEventListener('DOMContentLoaded', () => {
     // ... all your other function calls ...
-    initializeMobileMenu(); 
+    initializeMobileMenu();
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const hamburger = document.getElementById('hamburgerMenu');
     const mobileNav = document.getElementById('mobileNav');
-    
-    hamburger.addEventListener('click', function() {
+
+    hamburger.addEventListener('click', function () {
         // Toggle active class on hamburger icon
         this.classList.toggle('active');
         // Toggle mobile nav
@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // --- Hamburger Menu Toggle ---
     function initializeMobileMenu() {
         const hamburgerMenu = document.getElementById('hamburgerMenu');
