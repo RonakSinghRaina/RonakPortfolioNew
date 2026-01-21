@@ -1914,3 +1914,64 @@ footer {
       grid-template-columns: 1fr;
   }
 }
+
+/* --- Text Reveal Animation --- */
+
+/* Base style for the animated text */
+.animate-text, .animate-text-delay {
+    position: relative;
+    color: rgba(255, 255, 255, 0.1); /* Start with dim/ghost text */
+    background: linear-gradient(to right, #ffffff, #ffffff 50%, var(--accent-primary) 50%, var(--accent-secondary));
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s linear infinite; /* Fallback animation */
+    
+    /* The Reveal Effect */
+    animation: textReveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    background-position: 200% center; /* Start hidden (off to the right) */
+}
+
+/* Specific styling for the main name */
+.animate-text {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+/* Specific styling for the subtitle (adds delay) */
+.animate-text-delay {
+    animation-delay: 0.5s; /* Starts 0.5s after the name */
+    font-size: 1.5rem;
+    font-family: "JetBrains Mono", monospace;
+    /* Ensure formatting remains correct on mobile */
+    white-space: normal; 
+    text-align: center;
+}
+
+/* The Animation Keyframes */
+@keyframes textReveal {
+    0% {
+        background-position: 200% center; /* Text is 'empty' */
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        background-position: 0% center; /* Text is fully filled */
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Mobile Adjustment (Crucial) --- */
+@media (max-width: 768px) {
+    .animate-text, .animate-text-delay {
+        /* Ensure the gradient works on smaller screens */
+        background-size: 200% auto; 
+        text-align: center;
+    }
+    .animate-text-delay {
+        font-size: 1.1rem; /* Smaller font for mobile */
+    }
+}
