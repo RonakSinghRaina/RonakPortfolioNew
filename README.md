@@ -37,7 +37,8 @@ The website is built using standard web technologies and is hosted via GitHub Pa
 ## Access
 
 The live portfolio can be viewed here:  
-**[Portfolio Website](https://<(https://ronaksinghraina.github.io/RonakPortfolioNew/)>)**
+[Portfolio Website](https://ronaksinghraina.github.io/RonakPortfolioNew/)
+
 
 ---
 
