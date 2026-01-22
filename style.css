@@ -141,7 +141,7 @@ body.light-theme .physics-background {
 
 body.light-theme .equation {
   color: rgba(30, 64, 175, 0.15);
-  opacity: 0.3;
+  opacity: 0.12;
 }
 .physics-particles {
   z-index: -9;
@@ -172,7 +172,7 @@ body.light-theme .equation {
   position: absolute;
   font-family: "JetBrains Mono", monospace;
   color: var(--accent-primary);
-  opacity: 0.2;
+  opacity: 0.08;
   font-size: 1.5rem;
   animation: floatEquation 20s linear infinite;
   font-weight: 500;
@@ -183,10 +183,10 @@ body.light-theme .equation {
     opacity: 0;
   }
   10% {
-    opacity: 0.2;
+    opacity: 0.08;
   }
   90% {
-    opacity: 0.2;
+    opacity: 0.08;
   }
   100% {
     transform: translateY(-100vh) rotate(360deg);
