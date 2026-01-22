@@ -3,15 +3,15 @@
 /* This class on the body tag activates the theme */
 .noether-theme {
     /* Define a new set of accent colors for this post */
-    --accent-primary: #9400D3;   /* Dark Violet */
-    --accent-secondary: #32CD32;  /* Lime Green */
-    --accent-tertiary: #BA55D3;  /* Medium Orchid */
-    --shadow-glow: 0 0 30px rgba(148, 0, 211, 0.3);
+    --accent-primary: #3b82f6;   /* Blue */
+    --accent-secondary: #ffffff;  /* White */
+    --accent-tertiary: #60a5fa;  /* Light Blue */
+    --shadow-glow: 0 0 30px rgba(59, 130, 246, 0.3);
 }
 
 /* Override existing styles using the theme class */
 .noether-theme .blog-header h1 {
-    background: linear-gradient(135deg, var(--accent-tertiary), var(--accent-secondary));
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

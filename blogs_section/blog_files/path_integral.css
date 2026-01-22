@@ -3,15 +3,15 @@
 /* This class on the body tag activates the new theme */
 .path-integral-theme {
     /* Define a new, distinct set of accent colors */
-    --accent-primary: #39FF14;   /* Electric Green */
-    --accent-secondary: #A0A0A0;  /* Cool Grey */
-    --accent-tertiary: #98FB98;  /* Pale Green */
-    --shadow-glow: 0 0 30px rgba(57, 255, 20, 0.3);
+    --accent-primary: #3b82f6;   /* Blue */
+    --accent-secondary: #ffffff;  /* White */
+    --accent-tertiary: #60a5fa;  /* Light Blue */
+    --shadow-glow: 0 0 30px rgba(59, 130, 246, 0.3);
 }
 
 /* Override existing styles using the theme class */
 .path-integral-theme .blog-header h1 {
-    background: linear-gradient(135deg, var(--accent-tertiary), var(--accent-primary));
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

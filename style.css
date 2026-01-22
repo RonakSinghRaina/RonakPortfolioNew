@@ -208,6 +208,21 @@ header {
   padding: 1rem 0;
   transition: all 0.3s ease;
 }
+
+/* Light Mode Header - Glassmorphism Effect */
+body.light-theme header {
+  background: rgba(255, 255, 255, 0.65);
+  border-bottom: 1px solid rgba(30, 64, 175, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+body.light-theme header.scrolled {
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
 header.scrolled {
   background: rgba(0, 0, 0, 0.6);
   box-shadow: var(--shadow-glow);
@@ -252,6 +267,11 @@ nav {
   margin-left: 1rem;
 }
 
+body.light-theme .theme-toggle {
+  background: rgba(30, 64, 175, 0.1);
+  border: 1px solid rgba(30, 64, 175, 0.2);
+}
+
 .theme-toggle:hover {
   transform: scale(1.1) rotate(15deg);
   background: rgba(59, 130, 246, 0.2);
@@ -260,7 +280,7 @@ nav {
 
 .theme-toggle i {
   font-size: 1.2rem;
-  color: var(--accent-secondary);
+  color: #3b82f6;
   transition: transform 0.3s ease;
 }
 
@@ -286,6 +306,13 @@ nav {
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
 }
+
+/* Light Mode Nav Links */
+body.light-theme .nav-links a {
+  background: rgba(30, 64, 175, 0.05);
+  border: 1px solid rgba(30, 64, 175, 0.15);
+  color: var(--text-secondary);
+}
 .nav-links a::before {
   content: "";
   position: absolute;
@@ -308,6 +335,12 @@ nav {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
   border-color: var(--accent-primary);
+}
+
+/* Light Mode Active/Hover - White Text */
+body.light-theme .nav-links a:hover,
+body.light-theme .nav-links a.active {
+  color: #ffffff;
 }
 
 /* Home Section Styles */
@@ -384,6 +417,12 @@ nav {
   color: #ffffff;
   display: inline-block;
   margin-right: 1rem;
+  transition: color 0.3s ease;
+}
+
+/* Light Mode - Black Text for Name */
+body.light-theme .white-text {
+  color: #0f172a;
 }
 
 /* PeerPrep Style: Blue Gradient Text */
@@ -737,6 +776,14 @@ nav {
   box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
   border-color: var(--accent-primary);
 }
+
+/* Light Mode Cards */
+body.light-theme .project-card:hover,
+body.light-theme .skill-card:hover,
+body.light-theme .blog-card:hover {
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+  border-color: var(--accent-secondary);
+}
 .project-icon,
 .skill-icon,
 .blog-icon {
@@ -792,6 +839,19 @@ nav {
   transition: all 0.3s ease;
   font-weight: 500;
 }
+
+/* Light Mode Tags */
+body.light-theme .tag {
+  background: rgba(59, 130, 246, 0.1);
+  color: #1e40af;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+body.light-theme .tag:hover {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.5);
+  color: #1e40af;
+}
 .tag:hover {
   background: rgba(59, 130, 246, 0.25);
   border-color: rgba(96, 165, 250, 0.6);
@@ -803,6 +863,12 @@ nav {
   color: #818cf8;
   border-color: rgba(129, 140, 248, 0.4);
 }
+
+body.light-theme .tag.secondary {
+  background: rgba(99, 102, 241, 0.1);
+  color: #4f46e5;
+  border-color: rgba(99, 102, 241, 0.3);
+}
 .tag.secondary:hover {
   background: rgba(99, 102, 241, 0.25);
   border-color: rgba(129, 140, 248, 0.6);
@@ -812,6 +878,12 @@ nav {
   background: rgba(168, 85, 247, 0.15);
   color: #c084fc;
   border-color: rgba(192, 132, 252, 0.4);
+}
+
+body.light-theme .tag.tertiary {
+  background: rgba(168, 85, 247, 0.1);
+  color: #a855f7;
+  border-color: rgba(168, 85, 247, 0.3);
 }
 .tag.tertiary:hover {
   background: rgba(168, 85, 247, 0.25);
@@ -916,6 +988,12 @@ nav {
   box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
   border-color: var(--accent-primary);
   background: rgba(59, 130, 246, 0.1);
+}
+
+/* Light Mode Course Tags */
+body.light-theme .course-tag:hover {
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.12);
+  background: rgba(59, 130, 246, 0.08);
 }
 .academic-info {
   background: var(--glass-bg);
@@ -1455,11 +1533,23 @@ footer {
   /* Keep all your existing styles below */
   max-width: 80ch;
   margin: 4rem auto;
-  background: rgba(17, 17, 17, 0.5);
+  background: rgba(20, 20, 35, 0.6);
   padding: 2rem 3rem;
   border-radius: 20px;
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px 0 rgba(59, 130, 246, 0.15);
+  transition: all 0.3s ease;
+}
+
+/* Light Mode Blog Post - Glassmorphism Effect */
+body.light-theme .blog-post {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(30, 64, 175, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
 }
 
 .blog-header {
@@ -1480,7 +1570,7 @@ footer {
 #back-page {
   /* Aligns the button with the blog article below it */
   max-width: 80ch;
-  margin: 2rem auto 0 auto;
+  margin: 8rem auto 0 auto;
   padding: 0 3rem; /* Matches the blog post's padding */
 }
 
@@ -1496,8 +1586,10 @@ footer {
 }
 
 #back-page a:hover {
-  color: var(--text-primary); /* Changes color to white on hover */
+  color: #ffffff;
   transform: translateX(-5px); /* Adds a subtle movement effect */
+  font-weight: 700;
+  transition: all 0.3s ease;
 }
 
 .blog-subtitle {
@@ -1595,6 +1687,16 @@ footer {
   border: 1px solid var(--glass-border);
 }
 
+/* Light Mode Equation Container - White Text */
+body.light-theme .equation-container {
+  background: #000;
+  color: #ffffff;
+}
+
+body.light-theme .equation-container * {
+  color: #ffffff !important;
+}
+
 .blog-figure {
   margin: 2rem 0;
   text-align: center;
@@ -1666,18 +1768,18 @@ footer {
 /* This class on the body tag activates the theme */
 .gr-theme {
   /* Define a new set of accent colors for this post */
-  --accent-primary: #ffd700; /* Gold */
-  --accent-secondary: #4169e1; /* Royal Blue */
-  --accent-tertiary: #afeeee; /* Pale Turquoise */
-  --shadow-glow: 0 0 30px rgba(255, 215, 0, 0.3);
+  --accent-primary: #3b82f6; /* Blue */
+  --accent-secondary: #ffffff; /* White */
+  --accent-tertiary: #60a5fa; /* Light Blue */
+  --shadow-glow: 0 0 30px rgba(59, 130, 246, 0.3);
 }
 
 /* Override existing styles using the theme class */
 .gr-theme .blog-header h1 {
   background: linear-gradient(
     135deg,
-    var(--accent-tertiary),
-    var(--accent-primary)
+    #3b82f6,
+    #60a5fa
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1974,6 +2076,11 @@ footer {
     gap: 2rem;
     transition: left 0.5s cubic-bezier(0.77, 0, 0.175, 1);
     z-index: 1001;
+}
+
+/* Light Mode Mobile Nav */
+body.light-theme .mobile-nav {
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .mobile-nav.active {

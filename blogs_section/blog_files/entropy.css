@@ -3,15 +3,15 @@
 /* This class on the body tag activates the theme */
 .entropy-v2-theme {
     /* Define a new, distinct set of accent colors */
-    --accent-primary: #AFEEEE;   /* Pale Turquoise */
-    --accent-secondary: #8A2BE2;  /* Blue Violet */
-    --accent-tertiary: #483D8B;  /* Dark Slate Blue */
-    --shadow-glow: 0 0 30px rgba(175, 238, 238, 0.2);
+    --accent-primary: #3b82f6;   /* Blue */
+    --accent-secondary: #ffffff;  /* White */
+    --accent-tertiary: #60a5fa;  /* Light Blue */
+    --shadow-glow: 0 0 30px rgba(59, 130, 246, 0.3);
 }
 
 /* Override existing styles using the theme class */
 .entropy-v2-theme .blog-header h1 {
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
