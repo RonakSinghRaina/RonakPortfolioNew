@@ -89,6 +89,11 @@ body {
   padding-right: 2rem;
 }
 
+main {
+  width: 100%;
+  margin: 0 auto;
+}
+
 /* Dynamic Background & Particles */
 .physics-background,
 .physics-particles,
@@ -544,16 +549,6 @@ body.light-theme .white-text {
     margin: 0 auto;
 }
 
-.profile-img {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    object-fit: cover;
-    position: relative;
-    z-index: 2;
-    margin: 0 auto;
-    display: block;
-}
 .profile-rings {
   position: absolute;
   top: 50%;
@@ -572,7 +567,8 @@ body.light-theme .white-text {
 .ring:nth-child(1) {
   width: 500px;
   position: absolute;
-  left: 200px;
+  left: 50%;
+  transform: translateX(-50%);
   height: 500px;
   border-top-color: var(--accent-primary);
   animation-duration: 8s;
@@ -581,7 +577,8 @@ body.light-theme .white-text {
   width: 450px;
   height: 450px;
   position: absolute;
-  left: 200px;
+  left: 50%;
+  transform: translateX(-50%);
   border-right-color: var(--accent-secondary);
   animation-duration: 12s;
   animation-direction: reverse;
@@ -589,7 +586,8 @@ body.light-theme .white-text {
 .ring:nth-child(3) {
   width: 400px;
   position: absolute;
-  left: 200px;
+  left: 50%;
+  transform: translateX(-50%);
   height: 400px;
   border-bottom-color: var(--accent-tertiary);
   animation-duration: 15s;
@@ -603,28 +601,17 @@ body.light-theme .white-text {
   }
 }
 .profile-img {
-  width: 350px;
-  height: 350px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   object-fit: cover;
-  position: absolute; /* Changed from relative to absolute */
+  position: relative;
   z-index: 2;
-  bottom: 0.5px; /* Changed from 70px */
-  left: 170px; /* Changed from 70px */
-  /* transform: translate(-50%, -50%); Added this line to perfectly center it */
+  margin: 0 auto;
+  display: block;
   border: 3px solid var(--glass-border);
   box-shadow: var(--shadow-glow);
   transition: all 0.3s ease;
-}
-.profile-img {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    object-fit: cover;
-    position: relative;
-    z-index: 2;
-    margin: 0 auto;
-    display: block;
 }
 
 .deleted {
@@ -1216,32 +1203,43 @@ footer {
     .hero {
         /* This ensures the container itself doesn't cause overflow */
         width: 100%;
-        padding: 0 1rem;
+        padding: 1rem;
+        min-height: auto;
+        height: auto;
+        padding-top: 80px;
+        padding-bottom: 40px;
+        gap: 1rem;
     }
     .hero h1 {
         font-size: 2.5rem;
-        word-wrap: break-word; /* Helps break long text if needed */
+        word-wrap: break-word;
     }
-    /* Fix text spacing */
-.hero {
-    min-height: 80vh; /* Reduce from 100vh */
-    gap: 1rem; /* Add gap to control spacing between elements */
-    padding: 1rem; /* Reduce padding */
-}
 
 .profile-bio-section {
-    padding: 2rem; /* Reduce padding */
-    gap: 2rem; /* Reduce gap */
+    padding: 2rem 1rem;
+    gap: 1.5rem;
+    display: block !important;
+    width: 100%;
+    margin: 0 auto;
 }
 
 /* Adjust profile image section */
 .profile-side {
-    margin: 0; /* Remove margin */
+    margin: 1.5rem 0 0 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .profile-container {
     margin: 0 auto;
     padding: 0;
+    max-width: 220px;
+}
+
+.profile-img {
+    width: 200px;
+    height: 200px;
 }
     .subtitle {
         font-size: 1.2rem;
@@ -1254,27 +1252,31 @@ footer {
 
     /* 2. FIX for the "About Me" Picture and Section */
     .profile-bio-section {
-        display: grid !important;
-        grid-template-columns: 1fr !important; /* Stacks the text and image vertically */
-        gap: 2rem;
-        padding: 4rem 1rem;
+        display: block !important;
+        padding: 2rem 1rem;
         text-align: center;
+        width: 100%;
+    }
+    .bio-content {
+        width: 100%;
     }
     .profile-side {
-        order: -1; /* Moves the profile picture to the TOP of the section on mobile */
-        justify-content: center; /* Centers the image container */
-        margin: 0 auto; /* Ensure the container itself is centered */
+        margin-top: 1.5rem;
+        width: 100%;
     }
     .bio-content h2 {
+        font-size: 1.8rem;
         background-position: center;
     }
     
     /* 3. FIX for the misaligned cards at the bottom */
     .quantum-grid {
         display: grid !important;
-        grid-template-columns: 1fr !important; /* Stacks the three cards vertically */
+        grid-template-columns: 1fr !important;
         padding: 2rem 1rem;
         width: 100%;
+        gap: 1.5rem;
+        margin: 0 auto;
     }
     
     /* --- General Styles for Other Pages --- */
@@ -1284,6 +1286,119 @@ footer {
     }
     .projects-grid, .skills-grid, .blog-grid, .contact-wrapper {
         grid-template-columns: 1fr;
+    }
+}
+
+/* --- iPad Air & Tablet Portrait Responsive Design (769px+) --- */
+@media (min-width: 769px) and (orientation: portrait) {
+    /* Profile section adjustments for tablets in portrait */
+    .profile-bio-section {
+        padding: 3rem 2rem;
+        gap: 2rem;
+        grid-template-columns: 1fr;
+        max-width: 100%;
+        margin: 0 auto;
+        align-items: center;
+    }
+    
+    .bio-content {
+        order: 1;
+    }
+    
+    .profile-side {
+        order: 2;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .profile-container {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+    
+    .profile-img {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .bio-content h2 {
+        font-size: 2.2rem;
+    }
+    
+    .bio-text {
+        font-size: 1rem;
+    }
+    
+    .quantum-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem;
+        padding: 3rem 2rem;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    .quantum-card {
+        padding: 2rem;
+    }
+    
+    nav {
+        padding: 0 2rem;
+        max-width: 100%;
+    }
+    
+    .page-container {
+        padding-top: 100px;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    main {
+        width: 100%;
+    }
+    
+    .hero {
+        min-height: 70vh;
+        padding: 2rem;
+    }
+}
+
+/* --- iPad Air Landscape Specific Fix (820px+) --- */
+@media (min-width: 820px) and (max-width: 1024px) and (orientation: landscape) {
+    .profile-bio-section {
+        padding: 3rem 1.5rem;
+        gap: 2rem;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+    
+    .profile-container {
+        max-width: 220px;
+    }
+    
+    .profile-img {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .bio-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .bio-text {
+        font-size: 0.9rem;
+    }
+    
+    .bio-text p {
+        margin-bottom: 1rem;
+    }
+    
+    .hero {
+        min-height: 60vh;
+        padding: 1rem;
     }
 }
 
@@ -2009,15 +2124,25 @@ body.light-theme .equation-container * {
 
 /* Add this to your style.css */
 .scroll-down-indicator {
-    position: relative;
-    bottom: 0.1rem;
-    left: 95%;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
     transform: translateX(-50%);
     color: var(--text-primary);
     font-size: 2rem;
     animation: bounce 3s infinite;
     cursor: pointer;
-    z-index: 10;
+    z-index: 5;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .scroll-down-indicator {
+        position: absolute;
+        bottom: 10px;
+        z-index: 5;
+        pointer-events: none;
+    }
 }
 
 @keyframes bounce {
