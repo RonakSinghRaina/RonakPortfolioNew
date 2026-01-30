@@ -467,20 +467,22 @@ body.light-theme .white-text {
   color: #0f172a;
 }
 
-/* PeerPrep Style: Blue Gradient Text */
+/* PeerPrep Style: Blue Gradient Text - Enhanced with Glow */
 .gradient-text-span {
   background: linear-gradient(
     90deg,
     #3b82f6,
     #6366f1,
-    #a855f7
+    #a855f7,
+    #6366f1,
+    #3b82f6
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   display: inline-block;
-  background-size: 200% 100%;
-  animation: gradientShimmer 3s ease-in-out infinite;
+  background-size: 300% 100%;
+  animation: gradientShimmer 4s ease-in-out infinite, textGlowPulse 3s ease-in-out infinite;
 }
 
 @keyframes gradientShimmer {
@@ -489,6 +491,15 @@ body.light-theme .white-text {
   }
   50% {
     background-position: 100% 50%;
+  }
+}
+
+@keyframes textGlowPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 4px rgba(99, 102, 241, 0.2));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.35));
   }
 }
 
@@ -977,13 +988,23 @@ body.light-theme .tag.tertiary {
   top: 1rem;
   right: 1rem;
   background: rgba(255, 0, 128, 0.2);
-  color: var(--accent-secondary);
+  color: #ff0080;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 600;
-  border: 1px solid rgba(255, 0, 128, 0.3);
+  border: 1px solid rgba(255, 0, 128, 0.4);
   backdrop-filter: blur(10px);
+  animation: comingSoonPulse 2s ease-in-out infinite;
+}
+
+@keyframes comingSoonPulse {
+  0%, 100% {
+    box-shadow: 0 0 3px rgba(255, 0, 128, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 8px rgba(255, 0, 128, 0.35);
+  }
 }
 
 /* Coursework Section */
