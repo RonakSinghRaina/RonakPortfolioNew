@@ -80,6 +80,16 @@ body {
   }
 }
 
+/* Mobile-friendly animation without transform (prevents scroll height issues) */
+@keyframes fadeInOnly {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .page-container {
   padding-top: 120px;
   min-height: calc(100vh - 100px); /* Adjust for footer height */
@@ -2263,6 +2273,41 @@ body.light-theme .mobile-nav {
   /* --- General Layout --- */
   html, body {
     overflow-x: hidden !important;
+  }
+  
+  /* --- FIX FOR MOBILE SCROLL ISSUE --- */
+  /* Disable transform-based animations on mobile that cause scroll height miscalculation */
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: opacity 0.8s ease !important;
+  }
+  
+  .reveal.active {
+    transform: none !important;
+  }
+  
+  /* Fix hero animations on mobile - use opacity only, no transforms that affect layout */
+  .hero h1,
+  .hero-headline,
+  .hero h2,
+  .hero-headline-sub {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: fadeInOnly 0.8s ease forwards !important;
+  }
+  
+  .hero-headline-sub {
+    animation-delay: 0.3s !important;
+  }
+  
+  /* Ensure main content takes proper height immediately */
+  main {
+    min-height: 100vh;
+  }
+  
+  #home-content {
+    min-height: auto;
   }
   
   /* --- Navigation --- */
